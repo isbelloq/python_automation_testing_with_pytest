@@ -43,4 +43,3 @@ def test_strjoin():
     l2 = ["Python", "Pytest and Automation"]
     assert " ".join(l1) == s1
     assert ",".join(l2) == s1
-
