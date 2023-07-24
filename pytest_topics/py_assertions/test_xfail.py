@@ -12,7 +12,7 @@ def test_strjoin():
 @pytest.mark.xfail(raises=IndexError, reason="known issue")
 def test_str04():
     letters = "abcdefghijklmnopqrstuvwxyz"
-    assert letters[100]
+    assert letters[10]
 
 @pytest.mark.xfail(sys.platform=="darwin", reason="works only in darwin")
 def test_str05():
