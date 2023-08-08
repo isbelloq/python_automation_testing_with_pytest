@@ -16,3 +16,13 @@ def setup02():
     wk2 = pytest.weekdays2.copy()
     wk2.insert(0, "thur")
     yield wk2
+
+@pytest.fixture()
+def setup04(request):
+    mon = getattr(request.module, "months")
+    print("\n in Fixture setup04")
+    print(f"\n Fixture Scope: {request.scope}")
+    print(f"\n Calling function: {request.function.__name__}")
+    print(f"\n Calling module: {request.module.__name__}")
+    mon.append("April")
+    yield mon
