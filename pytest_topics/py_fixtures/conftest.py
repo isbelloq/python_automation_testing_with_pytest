@@ -26,3 +26,12 @@ def setup04(request):
     print(f"\n Calling module: {request.module.__name__}")
     mon.append("April")
     yield mon
+
+@pytest.fixture()
+def setup05():
+    def get_structure(name):
+        if name == "list":
+            return [1, 2, 3]
+        elif name == "tuple":
+            return (1, 2, 3)
+    return get_structure
