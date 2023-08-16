@@ -31,3 +31,23 @@ def add_diff_variety(fruits):
 def count_increases(fruits, count):
     print(fruits)
     assert len(fruits) == count
+
+pytest.total_fruits = 0
+
+@given(
+    parsers.parse("Given there are {count:d} fruits"),
+    target_fixture="start_fruits"
+    )
+def existing_fruits(count):
+    pytest.total_fruits = count
+    return dict(start= count, eat = 0)
+
+@when(parsers.parse("I eat {eat:d} fruits"))
+def eat_fruits(start_fruits, eat):
+    start_fruits["eat"] += eat
+    print(start_fruits)
+
+@then(parsers.parse("I should have {left:d} fruits"))
+def should_have_left_fruits(start_fruits, left):
+    assert start_fruits["start"] == pytest.total_fruits
+    assert start_fruits["start"] - start_fruits["eat"] == left

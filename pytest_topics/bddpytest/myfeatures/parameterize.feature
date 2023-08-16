@@ -6,3 +6,9 @@ Feature: Parameterizing test in Python BDD
     Then there is same count of varieties
     But if we add different variety of fruit
     Then the count of varieties increases to 4
+
+  Scenario: Parameterize benefits
+    Given Given there are 5 fruits
+    When I eat 3 fruits
+    And I eat 2 fruits
+    Then I should have 0 fruits
